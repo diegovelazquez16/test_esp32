@@ -43,7 +43,7 @@
     <button class="btn" onclick="enviarComando('backward')">Atrás</button>
 
     <script>
-        const ESP_IP = "http://192.168.1.100";  // ⚠️ Cambia esto por la IP de tu ESP32
+        const ESP_IP = "http://192.168.3.2";  // ⚠️ Cambia esto por la IP de tu ESP32
 
         function enviarComando(accion) {
             fetch(`${ESP_IP}/${accion}`)
