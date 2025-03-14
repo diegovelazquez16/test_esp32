@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control del Carrito</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        .btn {
+            display: inline-block;
+            width: 100px;
+            height: 50px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .btn:active {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Control del Carrito</h1>
+    
+    <button class="btn" onclick="enviarComando('forward')">Adelante</button>
+    <br>
+    <button class="btn" onclick="enviarComando('left')">Izquierda</button>
+    <button class="btn" onclick="enviarComando('stop')">Detener</button>
+    <button class="btn" onclick="enviarComando('right')">Derecha</button>
+    <br>
+    <button class="btn" onclick="enviarComando('backward')">Atrás</button>
+
+    <script>
+        const ESP_IP = "http://192.168.1.100";  // ⚠️ Cambia esto por la IP de tu ESP32
+
+        function enviarComando(accion) {
+            fetch(`${ESP_IP}/${accion}`)
+                .then(response => response.text())
+                .then(data => console.log(data))
+                .catch(error => console.error("Error:", error));
+        }
+    </script>
+
+</body>
+</html>
